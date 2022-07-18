@@ -13,9 +13,15 @@
 {% block content %}
 <div class="container">
     <h1 class="heading">Select Movie</h1>
+  {% if movies|length != 0 %}
+  {% for movie in movies: %}
   <p>
-    <a href="#"> MOVIE TITLE - MOVIE RELEASE DATE</a>
+    <a href="{{url_for('select_movie', id = movie.id)}}"> {{movie.title}} - {{movie.description}}</a>
   </p>
+  {% endfor %}
+  {% else %}
+  <h3>No such movie found</h3>
+  {% endif %}
 
 </div>
 {% endblock %}
